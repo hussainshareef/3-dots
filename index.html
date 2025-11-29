@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>3dots | DevOps Consulting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="3dots - DevOps consulting to help you ship faster, scale safer and sleep better." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
+      --transition-fast: 0.18s ease-out;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0, #020617 45%, #000 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      color: var(--text);
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-dots {
+      display: flex;
+      gap: 0.18rem;
+    }
+
+    .logo-dots span {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+    }
+
+    .logo-dots span:nth-child(2) {
+      opacity: 0.6;
+    }
+
+    .logo-dots span:nth-child(3) {
+      opacity: 0.3;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), #a855f7);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .nav-toggle span {
+      display: inline-block;
+      margin-left: 0.35rem;
+      font-size: 1rem;
+    }
+
+    .nav-links-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0 1.5rem 0.75rem;
+      font-size: 0.92rem;
+      background: radial-gradient(circle at top left, #020617, #020617 40%, #020617f2 100%);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .nav-links-mobile a {
+      color: var(--muted);
+    }
+
+    .nav-links-mobile a:hover {
+      color: var(--text);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.6rem 0.18rem 0.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.8rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .badge-strong {
+      border-color: rgba(56, 189, 248, 0.9);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      font-weight: 600;
+      box-shadow: 0 14px 40px rgba(8, 47, 73, 0.72);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 50px rgba(8, 47, 73, 0.9);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.95);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-note span {
+      color: var(--accent);
+    }
+
+    .hero-card {
+      border-radius: 24px;
+      background: radial-gradient(circle at top, #020617, #020617 35%, #020617 100%);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: var(--shadow-soft);
+      padding: 1.4rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.08;
+      background:
+        radial-gradient(circle at 10% 20%, #38bdf8 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, #a855f7 0, transparent 60%);
+      mix-blend-mode: screen;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--accent);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric {
+      padding: 0.7rem 0.75rem;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .metric-value {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .metric-value span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .hero-stack {
+      border-radius: 16px;
+      padding: 0.75rem 0.8rem;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stack-pill {
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+    }
+
+    .stack-pill.hot {
+      border-color: rgba(56, 189, 248, 0.9);
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 4.25rem 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: rgba(2, 6, 23, 0.4);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.25rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+
+    /* SERVICES */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.92), #020617 90%);
+      border: 1px solid var(--border);
+      padding: 1.3rem;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 60%);
+      transition: opacity var(--transition-fast);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .card p {
+      margin: 0 0 0.7rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      padding: 0.16rem 0.5rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* PRODUCTS / PRICING */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .price-card {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.07), #020617 70%);
+      padding: 1.4rem 1.3rem 1.3rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .price-card.featured {
+      border-color: rgba(56, 189, 248, 0.75);
+      box-shadow: 0 22px 55px rgba(56, 189, 248, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .price-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .price-pill {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      padding: 0.18rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .price-value {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0.2rem 0 0.3rem;
+    }
+
+    .price-value span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .price-desc {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .price-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.8rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .price-list li {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .price-list li::before {
+      content: "•";
+      color: var(--accent);
+      margin-top: -0.05rem;
+    }
+
+    .price-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .price-footer a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 0.2rem;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .case {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: #020617;
+      padding: 1.1rem 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .case-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .case h3 {
+      font-size: 0.95rem;
+      margin: 0 0 0.1rem;
+    }
+
+    .case span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .case-metric {
+      margin-top: 0.15rem;
+      color: var(--accent);
+      font-size: 0.82rem;
+    }
+
+    /* TEAM */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .member {
+      border-radius: 20px;
+      padding: 1.1rem;
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617 85%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.86rem;
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .member-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .member-links {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+    }
+
+    .member-links a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 0.2rem;
+    }
+
+    /* BLOG */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .post {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1rem;
+      background: #020617;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.84rem;
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .post h3 {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .post a {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 0.15rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.18rem;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: rgba(56, 189, 248, 0.8);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+    }
+
+    .contact-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .contact-meta a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 0.2rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .pill-row span {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
+      padding: 1rem 0 1.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: #020617;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid-3,
+      .portfolio-grid,
+      .team-grid,
+      .pricing-grid,
+      .blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-cta {
+        display: none;
+      }
+      .nav-toggle {
+        display: inline-flex;
+      }
+      .hero {
+        padding-top: 3.2rem;
+      }
+      section {
+        padding: 3.2rem 0;
+      }
+      .grid-3,
+      .portfolio-grid,
+      .team-grid,
+      .pricing-grid,
+      .blog-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="logo">
+          <div class="logo-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span>3dots</span>
+        </a>
+        <nav class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#products">Products</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#team">Team</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn-primary nav-cta">
+          Book a call →
+        </a>
+        <button class="nav-toggle" id="navToggle">
+          Menu <span>☰</span>
+        </button>
+      </div>
+      <nav class="nav-links-mobile" id="navMobile">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#products">Products</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#team">Team</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main id="home" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              DevOps consulting for high-impact teams
+            </div>
+            <h1>
+              Turn release chaos into<br />
+              <span>predictable, automated delivery.</span>
+            </h1>
+            <p class="hero-sub">
+              3dots helps growing engineering teams design reliable CI/CD pipelines,
+              production-grade Kubernetes, and cloud infrastructure that scales
+              without burning out your developers.
+            </p>
+            <div class="hero-badges">
+              <span class="badge badge-strong">Kubernetes · Azure · AWS · GCP</span>
+              <span class="badge">CI/CD design & audits</span>
+              <span class="badge">Site Reliability & observability</span>
+            </div>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">
+                Book a free 30-min consult
+                <span>→</span>
+              </a>
+              <a href="#services" class="btn-ghost">
+                View services
+              </a>
+            </div>
+            <p class="hero-note">
+              <span>Typical outcomes:</span> 30–70% faster releases, fewer 3 AM incidents,
+              and happier engineering teams.
+            </p>
+          </div>
+
+          <aside class="hero-card" aria-label="Delivery health snapshot">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Delivery health snapshot</div>
+                <div class="metric-label">Example transformation in 90 days</div>
+              </div>
+              <span class="hero-pill">3dots playbook</span>
+            </div>
+            <div class="hero-metrics">
+              <div class="metric">
+                <div class="metric-label">Deploy frequency</div>
+                <div class="metric-value">2× <span>per day</span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Lead time</div>
+                <div class="metric-value">4 hrs <span>→ prod</span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Failed deploys</div>
+                <div class="metric-value">-65% <span>incidents</span></div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Infra cost</div>
+                <div class="metric-value">-25% <span>optimized</span></div>
+              </div>
+            </div>
+            <div class="hero-stack">
+              <span class="stack-pill hot">Kubernetes</span>
+              <span class="stack-pill hot">GitHub Actions</span>
+              <span class="stack-pill">Azure DevOps</span>
+              <span class="stack-pill">Terraform</span>
+              <span class="stack-pill">Helm</span>
+              <span class="stack-pill">ArgoCD</span>
+              <span class="stack-pill">Prometheus · Grafana</span>
+              <span class="stack-pill">Istio / Ingress</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">About 3dots</div>
+            <h2 class="section-title">We live where code meets infrastructure.</h2>
+          </div>
+          <p class="section-sub">
+            3dots is a DevOps-first consulting studio focused on helping startups and
+            growing product teams ship safely at speed. From greenfield platforms to
+            untangling legacy pipelines, we meet you where you are and build a path to
+            reliable, observable delivery.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>DevOps, not buzzwords</h3>
+            <p>
+              We don’t sell tools. We design workflows—version control, branching,
+              CI/CD, observability, incident response—that actually fit your team.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Release strategy</span>
+              <span class="tag">DORA metrics</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Cloud-native by default</h3>
+            <p>
+              Kubernetes, containers, IaC and GitOps are our baseline, not the future.
+              We help you adopt them without breaking production.
+            </p>
+            <div class="card-tags">
+              <span class="tag">K8s</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">GitOps</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Partner mindset</h3>
+            <p>
+              We work like an embedded platform team—pairing with your engineers,
+              coaching, and leaving behind docs and playbooks, not just YAML.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Workshops</span>
+              <span class="tag">Playbooks</span>
+              <span class="tag">Training</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Services</div>
+            <h2 class="section-title">DevOps services that cover your lifecycle.</h2>
+          </div>
+          <p class="section-sub">
+            Pick a starting point—assessment, CI/CD, Kubernetes, or observability—or
+            combine them into a complete platform engagement.
+          </p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>DevOps maturity assessment</h3>
+            <p>
+              In 2–3 weeks we map your current pipelines, release process, infra,
+              tooling and team workflows into a practical roadmap.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Discovery</span>
+              <span class="tag">Roadmap</span>
+              <span class="tag">Architecture review</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>CI/CD design & implementation</h3>
+            <p>
+              We design and implement secure, fast, and reproducible pipelines across
+              your services with proper approvals and rollbacks.
+            </p>
+            <div class="card-tags">
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">GitLab CI</span>
+              <span class="tag">Azure DevOps</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Kubernetes & platform engineering</h3>
+            <p>
+              From cluster baseline to multi-environment setups with namespaces,
+              ingress, auto-scaling, and RBAC—all codified as IaC.
+            </p>
+            <div class="card-tags">
+              <span class="tag">K8s</span>
+              <span class="tag">Helm</span>
+              <span class="tag">GitOps</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Cloud infrastructure as code</h3>
+            <p>
+              We turn manual cloud consoles into repeatable Terraform modules and
+              environments with clear separation of dev/stage/prod.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Terraform</span>
+              <span class="tag">Azure</span>
+              <span class="tag">AWS</span>
+              <span class="tag">GCP</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Observability & SRE foundations</h3>
+            <p>
+              Metrics, logs and traces wired into dashboards and alerts that your
+              engineers actually use, not mute.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Prometheus</span>
+              <span class="tag">Grafana</span>
+              <span class="tag">Alerting</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Team enablement & training</h3>
+            <p>
+              Hands-on sessions to help your developers understand CI/CD, Kubernetes,
+              IaC and production debugging with confidence.
+            </p>
+            <div class="card-tags">
+              <span class="tag">Workshops</span>
+              <span class="tag">Playbooks</span>
+              <span class="tag">Office hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Products</div>
+            <h2 class="section-title">Engagement models that match your stage.</h2>
+          </div>
+          <p class="section-sub">
+            3dots offers productized consulting packages so you know exactly what you
+            get—scope, timeline and outcomes.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="price-header">
+              <div class="price-name">Launchpad Audit</div>
+              <span class="price-pill">For early teams</span>
+            </div>
+            <p class="price-desc">
+              A focused 2-week engagement to understand your current setup and give
+              a prioritized DevOps roadmap.
+            </p>
+            <ul class="price-list">
+              <li>Architecture & pipeline review</li>
+              <li>Risk & bottleneck analysis</li>
+              <li>Roadmap for next 3–6 months</li>
+              <li>1 workshop with your team</li>
+            </ul>
+            <div class="price-footer">
+              <span>Typical duration: 2 weeks</span>
+              <a href="#contact">Request details</a>
+            </div>
+          </div>
+          <div class="price-card featured">
+            <div class="price-header">
+              <div class="price-name">Delivery Accelerator</div>
+              <span class="price-pill">Most popular</span>
+            </div>
+            <p class="price-desc">
+              8–12 weeks to redesign CI/CD, implement infra as code, and harden your
+              Kubernetes or cloud platform.
+            </p>
+            <ul class="price-list">
+              <li>CI/CD restructuring & templates</li>
+              <li>Environment strategy (dev/stage/prod)</li>
+              <li>Kubernetes or cloud infra baseline</li>
+              <li>Dashboards + alerts + runbooks</li>
+            </ul>
+            <div class="price-footer">
+              <span>Best for 5–30 engineers</span>
+              <a href="#contact">Plan a scope call</a>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-header">
+              <div class="price-name">Embedded Platform Partner</div>
+              <span class="price-pill">Ongoing</span>
+            </div>
+            <p class="price-desc">
+              A part-time platform team that works with you monthly to keep your
+              platform evolving with your product.
+            </p>
+            <ul class="price-list">
+              <li>Monthly roadmap & backlog</li>
+              <li>Production support for changes</li>
+              <li>Regular reviews & optimizations</li>
+              <li>On-demand training sessions</li>
+            </ul>
+            <div class="price-footer">
+              <span>Retainer-based</span>
+              <a href="#contact">Discuss retainer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Pricing</div>
+            <h2 class="section-title">Transparent, outcome-driven pricing.</h2>
+          </div>
+          <p class="section-sub">
+            Pricing depends on scope and size, but most early-stage teams fit in one
+            of these bands. We’re happy to work in INR, USD, SGD or AED.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="price-header">
+              <div class="price-name">Focused Audit</div>
+              <span class="price-pill">Starting from</span>
+            </div>
+            <div class="price-value">
+              Custom<span> / engagement</span>
+            </div>
+            <p class="price-desc">
+              Ideal if you want clarity and a roadmap but your internal team will
+              execute the changes.
+            </p>
+            <ul class="price-list">
+              <li>Fixed scope & deliverables</li>
+              <li>Short, time-boxed engagement</li>
+              <li>Remote friendly</li>
+            </ul>
+            <div class="price-footer">
+              <span>Perfect for seed/Series A</span>
+              <a href="#contact">Get a quote</a>
+            </div>
+          </div>
+          <div class="price-card featured">
+            <div class="price-header">
+              <div class="price-name">Implementation Sprint</div>
+              <span class="price-pill">Value</span>
+            </div>
+            <div class="price-value">
+              Custom<span> / month</span>
+            </div>
+            <p class="price-desc">
+              We design and implement your platform changes together with your team,
+              sharing code and knowledge.
+            </p>
+            <ul class="price-list">
+              <li>Blended consulting + hands-on work</li>
+              <li>Weekly check-ins & demos</li>
+              <li>Includes docs & handover</li>
+            </ul>
+            <div class="price-footer">
+              <span>Great for 3–12 month journeys</span>
+              <a href="#contact">Share your context</a>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-header">
+              <div class="price-name">Advisory & Coaching</div>
+              <span class="price-pill">Flexible</span>
+            </div>
+            <div class="price-value">
+              Hourly<span> or retainer</span>
+            </div>
+            <p class="price-desc">
+              For CTOs and leads who want a sounding board for platform decisions,
+              hiring and architecture.
+            </p>
+            <ul class="price-list">
+              <li>1:1 or small-group calls</li>
+              <li>Review of designs & proposals</li>
+              <li>Interview & hiring support</li>
+            </ul>
+            <div class="price-footer">
+              <span>Cancel anytime</span>
+              <a href="#contact">Ask about slots</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Portfolio</div>
+            <h2 class="section-title">Example outcomes from 3dots playbooks.</h2>
+          </div>
+          <p class="section-sub">
+            Rename these with your real client names later. The idea is to show
+            before/after and concrete impact.
+          </p>
+        </div>
+        <div class="portfolio-grid">
+          <article class="case">
+            <div class="case-label">SaaS · Fintech</div>
+            <h3>From weekly releases to multiple per day</h3>
+            <span>Re-designed CI/CD, introduced feature flags and blue-green deploys on Kubernetes.</span>
+            <div class="case-metric">Result: 6× deploy frequency · 40% fewer production incidents.</div>
+          </article>
+          <article class="case">
+            <div class="case-label">E-commerce · Scale-up</div>
+            <h3>Cloud spend under control</h3>
+            <span>Terraform baseline, autoscaling, right-sizing, and observability for peak-sale traffic.</span>
+            <div class="case-metric">Result: 28% infra cost reduction without performance loss.</div>
+          </article>
+          <article class="case">
+            <div class="case-label">Healthcare · Startup</div>
+            <h3>From manual deploys to safe automation</h3>
+            <span>Pipeline with approvals, compliance gates, and audit-friendly deploy history.</span>
+            <div class="case-metric">Result: 0 failed releases in 3 months post-go-live.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Team</div>
+            <h2 class="section-title">Platform-first engineers, not generic consultants.</h2>
+          </div>
+          <p class="section-sub">
+            Replace these profiles with your real details and LinkedIn links. Even a
+            lean core team builds trust when presented clearly.
+          </p>
+        </div>
+        <div class="team-grid">
+          <div class="member">
+            <div class="avatar">H</div>
+            <div class="member-role">Founder · Principal DevOps</div>
+            <strong><!-- Your Name Here -->Your Name</strong>
+            <p>
+              7+ years across DevOps, cloud and Kubernetes—helping teams move from
+              ad-hoc scripts to reliable platforms.
+            </p>
+            <div class="member-links">
+              <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+          <div class="member">
+            <div class="avatar">C</div>
+            <div class="member-role">Cloud & Infra</div>
+            <strong>Cloud Specialist</strong>
+            <p>
+              Designs secure, scalable foundations on Azure, AWS and GCP with
+              Terraform, networking and security baked in.
+            </p>
+            <div class="member-links">
+              <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+          <div class="member">
+            <div class="avatar">S</div>
+            <div class="member-role">SRE & Observability</div>
+            <strong>Reliability Engineer</strong>
+            <p>
+              Focused on SLOs, incident response and making sure dashboards and
+              alerts show what your team actually needs.
+            </p>
+            <div class="member-links">
+              <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Blog</div>
+            <h2 class="section-title">Share how you think, not just what you sell.</h2>
+          </div>
+          <p class="section-sub">
+            Short, practical posts about CI/CD, Kubernetes and DevOps will attract
+            exactly the engineering leaders you want.
+          </p>
+        </div>
+        <div class="blog-grid">
+          <article class="post">
+            <div class="post-meta">
+              <span>Playbook</span>
+              <span>~6 min read</span>
+            </div>
+            <h3>Designing a CI/CD pipeline your team won’t hate</h3>
+            <p>
+              Opinionated tips on branch strategy, approvals and rollbacks for small
+              product teams.
+            </p>
+            <a href="#">Coming soon →</a>
+          </article>
+          <article class="post">
+            <div class="post-meta">
+              <span>Kubernetes</span>
+              <span>~5 min read</span>
+            </div>
+            <h3>First 10 things to fix in any new cluster</h3>
+            <p>
+              A quick checklist we run through before trusting a cluster with
+              production traffic.
+            </p>
+            <a href="#">Coming soon →</a>
+          </article>
+          <article class="post">
+            <div class="post-meta">
+              <span>SRE</span>
+              <span>~4 min read</span>
+            </div>
+            <h3>DORA metrics that actually matter for startups</h3>
+            <p>
+              How to measure and move the needles that correlate with happier users
+              and happier engineers.
+            </p>
+            <a href="#">Coming soon →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">Tell us about your delivery pain.</h2>
+          </div>
+          <p class="section-sub">
+            Share a bit about your stack and challenges. We’ll reply with a short
+            loom or email suggesting where to start—no pressure.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div>
+            <!-- Replace action with your Formspree / backend later -->
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Work email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  required
+                />
+              </div>
+              <div>
+                <label for="company">Company</label>
+                <input
+                  id="company"
+                  name="company"
+                  placeholder="Company name"
+                />
+              </div>
+              <div>
+                <label for="role">Your role</label>
+                <input
+                  id="role"
+                  name="role"
+                  placeholder="CTO, Engineering Manager, DevOps Lead..."
+                />
+              </div>
+              <div>
+                <label for="message">What are you trying to improve?</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="e.g. 'Our releases are slow/unsafe', 'Kubernetes is fragile', 'Infra cost is exploding'..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary">
+                Send message
+              </button>
+            </form>
+          </div>
+          <aside class="contact-meta">
+            <div>
+              <strong>Prefer email?</strong><br />
+              <!-- Put your real email here -->
+              Drop a line at
+              <a href="mailto:hello@3dots.dev">hello@3dots.dev</a>
+              and we’ll get back within 1–2 business days.
+            </div>
+            <div>
+              <strong>Typical clients</strong>
+              <ul class="contact-list">
+                <li>Seed to Series C product companies</li>
+                <li>Teams of 5–50 engineers</li>
+                <li>SaaS, fintech, e-commerce, platforms</li>
+              </ul>
+            </div>
+            <div>
+              <strong>We’re a fit if you care about:</strong>
+              <div class="pill-row">
+                <span>Fewer manual steps</span>
+                <span>Repeatable environments</span>
+                <span>Clear observability</span>
+                <span>Smaller incident blast radius</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> 3dots. All rights reserved.</div>
+        <div class="footer-links">
+          <!-- Replace with real links -->
+          <a href="#home">Back to top</a>
+          <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="#" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMobile = document.getElementById("navMobile");
+
+    if (navToggle && navMobile) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = navMobile.style.display === "flex";
+        navMobile.style.display = isOpen ? "none" : "flex";
+      });
+
+      navMobile.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMobile.style.display = "none";
+        });
+      });
+    }
+
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

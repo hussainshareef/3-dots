@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact | 3dots DevOps Consulting</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact 3dots for DevOps and platform consulting." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="bg-dots">
+    <div class="dot dot1" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="dot dot2" style="top: 60%; left: 40%; animation-delay: 2s;"></div>
+    <div class="dot dot3" style="top: 35%; left: 75%; animation-delay: 4s;"></div>
+    <div class="dot dot1" style="top: 80%; left: 20%; animation-delay: 6s;"></div>
+    <div class="dot dot2" style="top: 10%; left: 70%; animation-delay: 8s;"></div>
+    <div class="dot dot3" style="top: 50%; left: 50%; animation-delay: 10s;"></div>
+  </div>
+
+  <div class="page">
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-wrap">
+          <img src="assets/logo.svg" alt="3dots logo" height="26" />
+          <span class="logo-text">3dots</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" class="theme-toggle">Dark mode <span>🌙</span></button>
+          <button id="nav-toggle" class="nav-toggle">Menu ☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="section-kicker">Contact</div>
+        <h1 class="hero-title">Tell us about your delivery pain.</h1>
+        <p class="hero-sub">
+          Share a little about your stack and challenges. We’ll reply with a short
+          email suggesting where to start—no pressure.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+          <!-- You can later wire this to Formspree or your backend -->
+          <form>
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Work email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" required />
+            </div>
+            <div>
+              <label for="company">Company</label>
+              <input id="company" name="company" placeholder="Company name" />
+            </div>
+            <div>
+              <label for="role">Your role</label>
+              <input id="role" name="role" placeholder="CTO, Engineering Manager, DevOps Lead..." />
+            </div>
+            <div>
+              <label for="message">What are you trying to improve?</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="e.g. 'Releases are slow/unsafe', 'Kubernetes is fragile', 'Infra cost is exploding'..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send message</button>
+          </form>
+
+          <aside class="contact-meta">
+            <div>
+              <strong>Email directly</strong><br />
+              <a href="mailto:mohammedhussainshareef68@gmail.com">
+                mohammedhussainshareef68@gmail.com
+              </a>
+            </div>
+            <div>
+              <strong>Typical clients</strong>
+              <ul class="contact-list">
+                <li>Seed to Series C product companies</li>
+                <li>Teams of 5–50 engineers</li>
+                <li>SaaS, fintech, e-commerce, platforms</li>
+              </ul>
+            </div>
+            <div>
+              <strong>We’re a fit if you care about:</strong>
+              <ul class="contact-list">
+                <li>Fewer manual steps</li>
+                <li>Repeatable environments</li>
+                <li>Clear observability</li>
+                <li>Smaller incident blast radius</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> 3dots. All rights reserved.</div>
+        <div>Built by Mohammed Hussain Shareef.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

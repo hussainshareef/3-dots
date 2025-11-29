@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" role="img" aria-label="3 Dots logo">
+  <rect width="120" height="40" rx="6" fill="#2b6cb0" />
+  <g fill="#fff" font-family="sans-serif" font-size="18" font-weight="700" text-anchor="middle">
+    <text x="30" y="26">3</text>
+    <circle cx="70" cy="20" r="6" fill="#fff" />
+    <circle cx="86" cy="20" r="6" fill="#fff" />
+    <circle cx="102" cy="20" r="6" fill="#fff" />
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="100%" height="100%" fill="#e2e8f0"/>
+  <g fill="#1a202c" font-family="Arial, sans-serif" font-size="20" text-anchor="middle">
+    <text x="200" y="190">Placeholder</text>
+    <text x="200" y="220">Founder Photo</text>
+  </g>
+</svg>

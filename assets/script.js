@@ -1,4 +1,4 @@
-// theme handling
+// theme handling and nav
 (function () {
   const root = document.documentElement;
   const stored = localStorage.getItem("theme");

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfolio | 3dots Case Studies</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="DevOps case studies and outcomes from 3dots." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="bg-dots">
+    <div class="dot dot1" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="dot dot2" style="top: 60%; left: 40%; animation-delay: 2s;"></div>
+    <div class="dot dot3" style="top: 35%; left: 75%; animation-delay: 4s;"></div>
+    <div class="dot dot1" style="top: 80%; left: 20%; animation-delay: 6s;"></div>
+    <div class="dot dot2" style="top: 10%; left: 70%; animation-delay: 8s;"></div>
+    <div class="dot dot3" style="top: 50%; left: 50%; animation-delay: 10s;"></div>
+  </div>
+
+  <div class="page">
+    <header class="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="logo-wrap">
+          <img src="assets/logo.svg" alt="3dots logo" height="26" />
+          <span class="logo-text">3dots</span>
+        </a>
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="products.html">Products</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="team.html">Team</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" class="theme-toggle">Dark mode <span>🌙</span></button>
+          <button id="nav-toggle" class="nav-toggle">Menu ☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="section-kicker">Portfolio</div>
+        <h1 class="hero-title">Real outcomes from 3dots playbooks.</h1>
+        <p class="hero-sub">
+          Names are anonymised, but the numbers and transformations are real.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid-3">
+          <div class="card">
+            <h3>Fintech SaaS — 70% faster deployments</h3>
+            <p>
+              Migrated from manual scripts and ad-hoc deploys to GitHub Actions and Kubernetes deployments.
+            </p>
+            <ul class="contact-list">
+              <li>Weekly → multiple daily releases</li>
+              <li>Blue/green deployments for critical services</li>
+              <li>Lead time reduced from days to hours</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>E-commerce platform — 32% infra cost reduction</h3>
+            <p>
+              Conducted a cost audit, applied autoscaling, right-sized clusters and optimised database usage.
+            </p>
+            <ul class="contact-list">
+              <li>Saved ~₹18 lakhs/year in cloud costs</li>
+              <li>No performance regressions during sale spikes</li>
+              <li>New dashboards for cost visibility</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>SaaS analytics company — 60% fewer incidents</h3>
+            <p>
+              Introduced structured observability, SLOs and an incident review playbook.
+            </p>
+            <ul class="contact-list">
+              <li>Noise reduced by consolidating alerts</li>
+              <li>Clear ownership per service</li>
+              <li>Faster time to detect and resolve</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-kicker">Your story</div>
+        <h2 class="section-title">Next case study could be yours.</h2>
+        <p class="section-sub">
+          Whether you’re struggling with slow releases, unstable clusters or exploding
+          cloud bills, we can help shape a clear before/after story for your team.
+        </p>
+        <p class="section-sub">
+          <a href="contact.html">Reach out</a> with a quick description of your current
+          challenges — we’ll suggest where to start.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> 3dots. All rights reserved.</div>
+        <div>Built by Mohammed Hussain Shareef.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
